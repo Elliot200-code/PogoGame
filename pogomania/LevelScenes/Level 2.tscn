@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://r51jtw52g6rw"]
+
+[ext_resource type="PackedScene" uid="uid://smsgylx24p4q" path="res://OtherScenes/player.tscn" id="1_1ka4u"]
+[ext_resource type="AudioStream" uid="uid://u13nrbaqyfng" path="res://Audio/humordome-boing-boing-bounce-454474 (1).wav" id="3_36tq4"]
+[ext_resource type="TileSet" uid="uid://clwy0hyq8cmfi" path="res://Tiles.tres" id="4_1ka4u"]
+[ext_resource type="PackedScene" uid="uid://becvhbsobyxgu" path="res://OtherScenes/audio_manager.tscn" id="4_cqva1"]
+[ext_resource type="Script" uid="uid://cc280o4bf6tsm" path="res://LevelScenes/sprite_2d.gd" id="5_takf1"]
+[ext_resource type="Script" uid="uid://c5g7dwumegfkq" path="res://LevelScenes/level_change.gd" id="6_cqva1"]
+[ext_resource type="Texture2D" uid="uid://dbfxs375clesk" path="res://Graphics/finish.png" id="7_gix3v"]
+
+[sub_resource type="Gradient" id="Gradient_4g8qb"]
+colors = PackedColorArray(0, 0.5333333, 1, 1, 1, 0.26999998, 0.36733323, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36tq4"]
+gradient = SubResource("Gradient_4g8qb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvbmi"]
+size = Vector2(64, 135)
+
+[node name="Level 1" type="Node2D" unique_id=663764655]
+
+[node name="Player" parent="." unique_id=1847957099 node_paths=PackedStringArray("audio_manager") instance=ExtResource("1_1ka4u")]
+position = Vector2(411, 222)
+audio_manager = NodePath("../AudioManager")
+starting_position = Vector2(411, 222)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=886518026]
+limit_left = -460
+limit_right = 2840
+limit_bottom = 600
+
+[node name="Bounce Sound Effect" type="AudioStreamPlayer2D" parent="." unique_id=859011650]
+stream = ExtResource("3_36tq4")
+
+[node name="AudioManager" parent="." unique_id=1352790231 instance=ExtResource("4_cqva1")]
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1202706799 groups=["FloorBody"]]
+position = Vector2(5, 0)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAGAAUAAQABAAAAAAAHAAUAAQABAAAAAAAIAAUAAQABAAEAAAAIAAQAAQABAAEAAAAIAAMAAQABAAEAAAAIAAIAAQABAAEAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAAVAAMAAQABAAAAAAAWAAMAAQABAAAAAAAbAAIAAQABAAAAAAAeAAUAAQABAAAAAAAfAAUAAQABAAAAAAAFAAUAAQABAAAAAAAEAAUAAQABAAAAAAAIAAEAAQABAAAAAAAXAAMAAQABAAAAAAAaAAIAAQABAAAAAAAgAAUAAQABAAEAAAAhAAUAAQABAAEAAAAiAAUAAQABAAEAAAAjAAUAAQABAAEAAAAgAAQAAQABAAAAAAAhAAQAAQABAAEAAAAiAAQAAQABAAEAAAAjAAQAAQABAAEAAAAiAAMAAQABAAEAAAAjAAMAAQABAAEAAAAhAAMAAQABAAAAAAAiAAIAAQABAAAAAAAjAAIAAQABAAEAAAAjAAEAAQABAAAAAAAmAAIAAQABAAAAAAAnAAIAAQABAAAAAAAoAAIAAQABAAAAAAApAAIAAQABAAAAAAAqAAIAAQABAAAAAAArAAIAAQABAAAAAAAsAAIAAQABAAAAAAAtAAIAAQABAAAAAAACAP//AQABAAAAAAACAAAAAQABAAEAAAACAAEAAQABAAEAAAACAAIAAQABAAEAAAACAAMAAQABAAEAAAACAAQAAQABAAEAAAACAAUAAQABAAEAAAADAAUAAQABAAAAAAA=")
+tile_set = ExtResource("4_1ka4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1387833099 node_paths=PackedStringArray("camera", "player")]
+z_index = -1
+position = Vector2(590.00006, 327)
+rotation = 1.5707964
+scale = Vector2(20, 30)
+texture = SubResource("GradientTexture2D_36tq4")
+script = ExtResource("5_takf1")
+camera = NodePath("../Player/Camera2D")
+player = NodePath("../Player")
+
+[node name="LevelChange" type="Area2D" parent="." unique_id=1193887704]
+position = Vector2(2770, 56)
+script = ExtResource("6_cqva1")
+level_to_change_to = "res://LevelScenes/Level 3.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange" unique_id=728775398]
+position = Vector2(41, 5.5)
+shape = SubResource("RectangleShape2D_wvbmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelChange" unique_id=1549348388]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_gix3v")
+
+[connection signal="area_entered" from="LevelChange" to="LevelChange" method="_on_area_entered"]

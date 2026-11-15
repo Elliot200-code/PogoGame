@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://becvhbsobyxgu"]
+
+[ext_resource type="Script" uid="uid://ydpvk3u23ag4" path="res://audio_manager.gd" id="1_6jj5d"]
+[ext_resource type="AudioStream" uid="uid://dkxyksxryk214" path="res://Audio/120 Chiptune in F Major.ogg" id="2_utuub"]
+[ext_resource type="AudioStream" uid="uid://u13nrbaqyfng" path="res://Audio/humordome-boing-boing-bounce-454474 (1).wav" id="3_nhx87"]
+[ext_resource type="AudioStream" uid="uid://d3ybi6gshuth1" path="res://Audio/u_lao9czi52e-lose-sound-619417(2).mp3" id="4_00qqv"]
+
+[node name="AudioManager" type="Node" unique_id=1352790231 node_paths=PackedStringArray("music", "bounce_sounc", "lose_sound")]
+script = ExtResource("1_6jj5d")
+music = NodePath("Music")
+bounce_sounc = NodePath("Bounce")
+lose_sound = NodePath("Lose")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1957049419]
+stream = ExtResource("2_utuub")
+volume_db = -4.0
+autoplay = true
+parameters/looping = true
+
+[node name="Bounce" type="AudioStreamPlayer" parent="." unique_id=1615427884]
+stream = ExtResource("3_nhx87")
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=1288429565]
+stream = ExtResource("4_00qqv")
+volume_db = 4.0
+pitch_scale = 1.2

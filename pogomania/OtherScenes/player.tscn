@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://smsgylx24p4q"]
+
+[ext_resource type="Script" uid="uid://drw1vvntal5fd" path="res://pogo_movement.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://0vf4p3hofivc" path="res://Graphics/pogo.png" id="2_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfa6b"]
+radius = 2.0
+
+[node name="Player" type="Area2D" unique_id=1847957099 node_paths=PackedStringArray("raycast_a", "raycast_b", "death_a", "death_b", "death_c") groups=["PlayerBody"]]
+script = ExtResource("1_onrkg")
+raycast_a = NodePath("Raycast A")
+raycast_b = NodePath("Raycast B")
+death_a = NodePath("Death A")
+death_b = NodePath("Death B")
+death_c = NodePath("Death C")
+gravitational_acceleration = 0.5
+jump_force = -15.0
+rotation_speed = 0.06
+death_time = 2.0
+
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=383352770]
+z_index = 1
+position = Vector2(11, -9)
+scale = Vector2(1, 2)
+texture = ExtResource("2_i3pqv")
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="." unique_id=1938365687]
+position = Vector2(6, 74)
+shape = SubResource("CircleShape2D_vfa6b")
+
+[node name="Raycasts" type="Node" parent="." unique_id=758623450]
+
+[node name="Raycast A" type="RayCast2D" parent="." unique_id=1947561315]
+position = Vector2(6, 76)
+target_position = Vector2(-2, 17)
+
+[node name="Raycast B" type="RayCast2D" parent="." unique_id=2071969894]
+position = Vector2(6, 76)
+target_position = Vector2(2, 17)
+
+[node name="Death A" type="RayCast2D" parent="." unique_id=2041063420]
+position = Vector2(7, -9)
+target_position = Vector2(13, 0)
+
+[node name="Death B" type="RayCast2D" parent="." unique_id=1804963675]
+position = Vector2(7, -9)
+target_position = Vector2(-14, 0)
+
+[node name="Death C" type="RayCast2D" parent="." unique_id=1293743283]
+position = Vector2(7, -9)
+target_position = Vector2(0, -15)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://b0jwpejdv25cd"]
+
+[ext_resource type="PackedScene" uid="uid://smsgylx24p4q" path="res://OtherScenes/player.tscn" id="1_db6df"]
+[ext_resource type="TileSet" uid="uid://clwy0hyq8cmfi" path="res://Tiles.tres" id="2_db6df"]
+[ext_resource type="AudioStream" uid="uid://u13nrbaqyfng" path="res://Audio/humordome-boing-boing-bounce-454474 (1).wav" id="3_7ahb7"]
+[ext_resource type="PackedScene" uid="uid://becvhbsobyxgu" path="res://OtherScenes/audio_manager.tscn" id="4_pj8g8"]
+[ext_resource type="Script" uid="uid://c5g7dwumegfkq" path="res://LevelScenes/level_change.gd" id="5_7ahb7"]
+[ext_resource type="Texture2D" uid="uid://dbfxs375clesk" path="res://Graphics/finish.png" id="6_pj8g8"]
+[ext_resource type="Script" uid="uid://cc280o4bf6tsm" path="res://LevelScenes/sprite_2d.gd" id="7_pj8g8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kh2s"]
+size = Vector2(64, 135)
+
+[sub_resource type="Gradient" id="Gradient_4g8qb"]
+colors = PackedColorArray(0, 0.5333333, 1, 1, 1, 0.26999998, 0.36733323, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6kh2s"]
+gradient = SubResource("Gradient_4g8qb")
+
+[node name="Level 3" type="Node2D" unique_id=663764655]
+
+[node name="Player" parent="." unique_id=1847957099 node_paths=PackedStringArray("audio_manager") instance=ExtResource("1_db6df")]
+position = Vector2(410, 220)
+audio_manager = NodePath("../AudioManager")
+starting_position = Vector2(410, 220)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=886518026]
+limit_left = 0
+limit_right = 5534
+limit_bottom = 600
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1580447948 groups=["FloorBody"]]
+position = Vector2(4, 0)
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AABlAAgAAQABAAAAAABmAAgAAQABAAAAAABoAAgAAQAAAAAAABBnAAgAAQABAAAAAABtAAgAAQABAAAAAABuAAgAAQABAAAAAABvAAgAAQABAAAAAABwAAgAAQABAAAAAABxAAgAAQABAAAAAAByAAgAAQABAAAAAABzAAgAAQABAAAAAAB0AAgAAQABAAAAAAB1AAgAAQABAAAAAAAJAAoAAQABAAAAAAAKAAoAAQABAAAAAAALAAoAAQABAAAAAAAMAAoAAQABAAAAAAANAAoAAQABAAEAAAAQAAUAAQABAAAAAAAdAAUAAQABAAEAAAAgAAYAAQABAAEAAAAoAAUAAQABAAAAAAAuAAQAAQABAAAAAAAvAAQAAQABAAAAAAA0AAgAAQABAAAAAAA8AAUAAQABAAAAAAA8AAYAAQABAAEAAABBAAgAAQABAAEAAABBAAkAAQABAAEAAABGAAUAAQABAAAAAABHAAUAAQABAAAAAABIAAUAAQABAAAAAABNAAcAAQABAAAAAABOAAcAAQABAAAAAABPAAcAAQABAAAAAABZAAkAAQABAAAAAABaAAkAAQABAAAAAABbAAkAAQABAAAAAABcAAkAAQABAAAAAABdAAkAAQABAAAAAAAGAAYAAQABAAAAAAAGAAcAAQABAAEAAAAGAAgAAQABAAEAAAAGAAkAAQABAAEAAAAGAAoAAQABAAEAAAAHAAoAAQABAAAAAAAIAAoAAQABAAAAAAANAAYAAQABAAAAAAANAAcAAQABAAEAAAANAAgAAQABAAEAAAANAAkAAQABAAEAAAARAAUAAQABAAAAAAASAAUAAQABAAAAAAAUAAMAAQABAAAAAAAVAAMAAQABAAAAAAAWAAMAAQABAAAAAAAaAAUAAQABAAAAAAAbAAYAAQABAAAAAAAcAAYAAQABAAAAAAAdAAMAAQABAAAAAAAdAAQAAQABAAEAAAAdAAYAAQABAAEAAAAhAAUAAQABAAAAAAAhAAYAAQABAAEAAAAiAAYAAQABAAEAAAAlAAUAAQABAAAAAAAnAAUAAQABAAAAAAApAAUAAQABAAAAAAArAAMAAQABAAEAAAArAAQAAQABAAEAAAAsAAQAAQABAAAAAAAtAAQAAQABAAAAAAAxAAgAAQABAAAAAAAyAAgAAQABAAAAAAAzAAgAAQABAAAAAAA1AAEAAQABAAAAAAA1AAIAAQABAAEAAAA2AAEAAQABAAAAAAA2AAIAAQABAAEAAAA3AAUAAQABAAAAAAA3AAYAAQABAAEAAAA4AAUAAQABAAAAAAA4AAYAAQABAAEAAAA5AAUAAQABAAAAAAA5AAYAAQABAAEAAAA8AAcAAQABAAEAAAA9AAYAAQABAAAAAAA9AAcAAQABAAEAAAA+AAgAAQABAAAAAAA+AAkAAQABAAEAAAA/AAkAAQABAAAAAABBAAcAAQABAAAAAABCAAYAAQABAAAAAABCAAcAAQABAAEAAABCAAgAAQABAAEAAABDAAUAAQABAAAAAABDAAYAAQABAAEAAABEAAUAAQABAAAAAABEAAYAAQABAAEAAABFAAUAAQABAAAAAABKAAcAAQABAAAAAABLAAcAAQABAAAAAABMAAcAAQABAAAAAABRAAUAAQABAAAAAABSAAUAAQABAAAAAABWAAkAAQABAAAAAABXAAkAAQABAAAAAABYAAkAAQABAAAAAABkAAgAAQABAAAAAABjAAgAAQABAAAAAABiAAgAAQABAAAAAABhAAgAAQAAAAAAAABsAAgAAQAAAAAAAAB2AAgAAQABAAAAAAB3AAgAAQABAAAAAAB4AAgAAQABAAAAAAB5AAgAAQABAAAAAAB6AAgAAQABAAAAAAB7AAgAAQABAAAAAAB8AAgAAQABAAAAAAB9AAgAAQABAAAAAAB+AAgAAQABAAAAAAA=")
+tile_set = ExtResource("2_db6df")
+
+[node name="Bounce Sound Effect" type="AudioStreamPlayer2D" parent="." unique_id=859011650]
+stream = ExtResource("3_7ahb7")
+
+[node name="AudioManager" parent="." unique_id=1352790231 instance=ExtResource("4_pj8g8")]
+
+[node name="LevelChange" type="Area2D" parent="." unique_id=778386266]
+position = Vector2(5468, 312)
+script = ExtResource("5_7ahb7")
+level_to_change_to = "/home/elliot/pogomania/LevelScenes/TheEnd.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange" unique_id=683985247]
+position = Vector2(41, 5.5)
+shape = SubResource("RectangleShape2D_6kh2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelChange" unique_id=46407854]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_pj8g8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=962636881 node_paths=PackedStringArray("camera", "player")]
+z_index = -1
+position = Vector2(590.00006, 327)
+rotation = 1.5707964
+scale = Vector2(20, 30)
+texture = SubResource("GradientTexture2D_6kh2s")
+script = ExtResource("7_pj8g8")
+camera = NodePath("../Player/Camera2D")
+player = NodePath("../Player")
+
+[connection signal="area_entered" from="LevelChange" to="LevelChange" method="_on_area_entered"]

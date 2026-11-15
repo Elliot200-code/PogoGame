@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkxyksxryk214"
+path="res://.godot/imported/120 Chiptune in F Major.ogg-99165c0a2e0e794081052ddb6ea3b64b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/120 Chiptune in F Major.ogg"
+dest_files=["res://.godot/imported/120 Chiptune in F Major.ogg-99165c0a2e0e794081052ddb6ea3b64b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
